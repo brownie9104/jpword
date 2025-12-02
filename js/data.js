@@ -179,10 +179,22 @@ const learningData = {
         description: '무작위 문장 읽기 연습 (심화)',
         parts: [
             {
-                id: 's_part1',
-                title: '무작위 단어 조합',
-                description: '히라가나/가타카나 무작위 조합 읽기',
-                type: 'random_sentence' // Special flag for generator
+                id: 's_hiragana',
+                title: '히라가나 읽기',
+                description: '히라가나로만 구성된 무작위 문장',
+                type: 'random_sentence_h'
+            },
+            {
+                id: 's_katakana',
+                title: '가타카나 읽기',
+                description: '가타카나로만 구성된 무작위 문장',
+                type: 'random_sentence_k'
+            },
+            {
+                id: 's_mixed',
+                title: '무작위 섞어 읽기',
+                description: '히라가나와 가타카나가 섞인 문장',
+                type: 'random_sentence_mix'
             }
         ]
     }
