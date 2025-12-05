@@ -26,6 +26,16 @@ const KANA_ROMAJI_MAP = {
     'わ': 'wa',
     'を': 'wo', '응': 'n', // Typo fix: 'ん' -> 'n'
     'ん': 'n',
+    'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
+    'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
+    '다': 'da', 'ぢ': 'ji', 'づ': 'zu', '데': 'de', '도': 'do',
+    'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
+    'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
+    'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
+    'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
+    'だ': 'da', 'ぢ': 'ji', 'づ': 'zu', 'で': 'de', 'ど': 'do',
+    'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
+    'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
 
     'ア': 'a', 'イ': 'i', 'ウ': 'u', 'エ': 'e', 'オ': 'o',
     'カ': 'ka', '키': 'ki', // Typo fix: 'キ' -> 'ki'
@@ -107,13 +117,46 @@ const KANA_ROMAJI_MAP = {
     '오': 'wo', // Typo fix: 'ヲ' -> 'wo'
     'ヲ': 'wo',
     '응': 'n', // Typo fix: 'ン' -> 'n'
-    'ン': 'n'
+    'ン': 'n',
+    'ガ': 'ga', 'ギ': 'gi', '그': 'gu', '게': 'ge', '고': 'go',
+    'グ': 'gu', 'ゲ': 'ge', 'ゴ': 'go',
+    '자': 'za', '지': 'ji', '즈': 'zu', '제': 'ze', '조': 'zo',
+    'ザ': 'za', 'ジ': 'ji', 'ズ': 'zu', 'ゼ': 'ze', 'ゾ': 'zo',
+    '다': 'da', '지': 'ji', '즈': 'zu', '데': 'de', '도': 'do',
+    'ダ': 'da', 'ヂ': 'ji', 'ヅ': 'zu', 'デ': 'de', 'ド': 'do',
+    '바': 'ba', '비': 'bi', '부': 'bu', '베': 'be', '보': 'bo',
+    'バ': 'ba', 'ビ': 'bi', 'ブ': 'bu', 'ベ': 'be', 'ボ': 'bo',
+    '파': 'pa', '피': 'pi', '푸': 'pu', '페': 'pe', '포': 'po',
+    'パ': 'pa', 'ピ': 'pi', 'プ': 'pu', 'ペ': 'pe', 'ポ': 'po',
+    'ガ': 'ga', 'ギ': 'gi', '그': 'gu', '게': 'ge', '고': 'go', // Typo fix: 'グ' -> 'gu', 'ゲ' -> 'ge', 'ゴ' -> 'go'
+    'グ': 'gu', 'ゲ': 'ge', 'ゴ': 'go',
+    '자': 'za', '지': 'ji', '즈': 'zu', '제': 'ze', '조': 'zo', // Typo fix: 'ザ' -> 'za', ...
+    'ザ': 'za', 'ジ': 'ji', 'ズ': 'zu', 'ゼ': 'ze', 'ゾ': 'zo',
+    '다': 'da', '지': 'ji', '즈': 'zu', '데': 'de', '도': 'do', // Typo fix: 'ダ' -> 'da', ...
+    'ダ': 'da', 'ヂ': 'ji', 'ヅ': 'zu', 'デ': 'de', 'ド': 'do',
+    '바': 'ba', '비': 'bi', '부': 'bu', '베': 'be', '보': 'bo', // Typo fix: 'バ' -> 'ba', ...
+    'バ': 'ba', 'ビ': 'bi', 'ブ': 'bu', 'ベ': 'be', 'ボ': 'bo',
+    '파': 'pa', '피': 'pi', '푸': 'pu', '페': 'pe', '포': 'po', // Typo fix: 'パ' -> 'pa', ...
+    'パ': 'pa', 'ピ': 'pi', 'プ': 'pu', 'ペ': 'pe', 'ポ': 'po'
 };
 
 function toRomaji(text) {
     let result = '';
     for (let i = 0; i < text.length; i++) {
         const char = text[i];
+
+        // Sokuon handling (small tsu)
+        if (char === 'っ' || char === 'ッ') {
+            if (i + 1 < text.length) {
+                const nextChar = text[i + 1];
+                const nextRomaji = KANA_ROMAJI_MAP[nextChar];
+                if (nextRomaji) {
+                    result += nextRomaji[0]; // Double the consonant
+                    continue;
+                }
+            }
+        }
+
         if (KANA_ROMAJI_MAP[char]) {
             result += KANA_ROMAJI_MAP[char];
         } else {
@@ -121,6 +164,49 @@ function toRomaji(text) {
         }
     }
     return result;
+}
+
+// --- Sound Effects (Web Audio API) ---
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playCorrectSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.3);
+}
+
+function playWrongSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+    osc.frequency.linearRampToValueAtTime(100, audioCtx.currentTime + 0.2);
+    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.3);
+}
+
+// --- TTS ---
+function speakText(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel(); // Stop previous
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ja-JP';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
 }
 
 class App {
@@ -505,6 +591,20 @@ class App {
 
         if (this.state.currentQuestion.feedbackText) {
             feedbackText.textContent = this.state.currentQuestion.feedbackText;
+
+            // Add TTS Button if not exists
+            if (!document.getElementById('btn-tts')) {
+                const ttsBtn = document.createElement('button');
+                ttsBtn.id = 'btn-tts';
+                ttsBtn.className = 'btn-icon';
+                ttsBtn.innerHTML = '🔊';
+                ttsBtn.style.marginLeft = '10px';
+                ttsBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    speakText(this.state.currentQuestion.question); // Speak the question (Japanese)
+                };
+                feedbackText.appendChild(ttsBtn);
+            }
         }
 
         if (isCorrect) {
@@ -527,6 +627,7 @@ class App {
         button.classList.add('correct');
         feedbackArea.textContent = '정답입니다! 🎉';
         feedbackArea.style.color = '#00b894';
+        playCorrectSound();
         this.state.score++;
 
         this.updateProgress(true);
@@ -540,6 +641,7 @@ class App {
         button.classList.add('wrong');
         feedbackArea.textContent = `오답입니다. 정답을 선택하여 넘어가세요.`;
         feedbackArea.style.color = '#ff7675';
+        playWrongSound();
 
         allButtons.forEach(btn => btn.disabled = true);
 

@@ -83,6 +83,46 @@ const learningData = {
                 characters: [
                     { char: 'わ', sound: '와' }, { char: 'を', sound: '오(wo)' }, { char: 'ん', sound: '응(n)' }
                 ]
+            },
+            {
+                id: 'h_row_ga',
+                title: '가행 (が行)',
+                description: 'が(가) ~ ご(고)',
+                characters: [
+                    { char: 'が', sound: '가' }, { char: 'ぎ', sound: '기' }, { char: 'ぐ', sound: '구' }, { char: 'げ', sound: '게' }, { char: 'ご', sound: '고' }
+                ]
+            },
+            {
+                id: 'h_row_za',
+                title: '자행 (ざ行)',
+                description: 'ざ(자) ~ ぞ(조)',
+                characters: [
+                    { char: 'ざ', sound: '자' }, { char: 'じ', sound: '지' }, { char: 'ず', sound: '즈' }, { char: 'ぜ', sound: '제' }, { char: 'ぞ', sound: '조' }
+                ]
+            },
+            {
+                id: 'h_row_da',
+                title: '다행 (だ行)',
+                description: 'だ(다) ~ ど(도)',
+                characters: [
+                    { char: 'だ', sound: '다' }, { char: 'ぢ', sound: '지(ji)' }, { char: 'づ', sound: '즈(zu)' }, { char: 'で', sound: '데' }, { char: 'ど', sound: '도' }
+                ]
+            },
+            {
+                id: 'h_row_ba',
+                title: '바행 (ば行)',
+                description: 'ば(바) ~ ぼ(보)',
+                characters: [
+                    { char: 'ば', sound: '바' }, { char: 'び', sound: '비' }, { char: 'ぶ', sound: '부' }, { char: 'べ', sound: '베' }, { char: 'ぼ', sound: '보' }
+                ]
+            },
+            {
+                id: 'h_row_pa',
+                title: '파행 (ぱ行)',
+                description: 'ぱ(파) ~ ぽ(포)',
+                characters: [
+                    { char: 'ぱ', sound: '파' }, { char: 'ぴ', sound: '피' }, { char: 'ぷ', sound: '푸' }, { char: 'ぺ', sound: '페' }, { char: 'ぽ', sound: '포' }
+                ]
             }
         ]
     },
@@ -169,6 +209,46 @@ const learningData = {
                 description: 'ワ(와) ~ ン(응)',
                 characters: [
                     { char: 'ワ', sound: '와' }, { char: 'ヲ', sound: '오(wo)' }, { char: 'ン', sound: '응(n)' }
+                ]
+            },
+            {
+                id: 'k_row_ga',
+                title: '가행 (ガ行)',
+                description: 'ガ(가) ~ ゴ(고)',
+                characters: [
+                    { char: 'ガ', sound: '가' }, { char: 'ギ', sound: '기' }, { char: 'グ', sound: '구' }, { char: 'ゲ', sound: '게' }, { char: 'ゴ', sound: '고' }
+                ]
+            },
+            {
+                id: 'k_row_za',
+                title: '자행 (ザ行)',
+                description: 'ザ(자) ~ ゾ(조)',
+                characters: [
+                    { char: 'ザ', sound: '자' }, { char: 'ジ', sound: '지' }, { char: 'ズ', sound: '즈' }, { char: 'ゼ', sound: '제' }, { char: 'ゾ', sound: '조' }
+                ]
+            },
+            {
+                id: 'k_row_da',
+                title: '다행 (ダ行)',
+                description: 'ダ(다) ~ ド(도)',
+                characters: [
+                    { char: 'ダ', sound: '다' }, { char: 'ヂ', sound: '지(ji)' }, { char: 'ヅ', sound: '즈(zu)' }, { char: 'デ', sound: '데' }, { char: 'ド', sound: '도' }
+                ]
+            },
+            {
+                id: 'k_row_ba',
+                title: '바행 (バ行)',
+                description: 'バ(바) ~ ボ(보)',
+                characters: [
+                    { char: 'バ', sound: '바' }, { char: 'ビ', sound: '비' }, { char: 'ブ', sound: '부' }, { char: 'ベ', sound: '베' }, { char: 'ボ', sound: '보' }
+                ]
+            },
+            {
+                id: 'k_row_pa',
+                title: '파행 (パ行)',
+                description: 'パ(파) ~ ポ(포)',
+                characters: [
+                    { char: 'パ', sound: '파' }, { char: 'ピ', sound: '피' }, { char: 'プ', sound: '푸' }, { char: 'ペ', sound: '페' }, { char: 'ポ', sound: '포' }
                 ]
             }
         ]
